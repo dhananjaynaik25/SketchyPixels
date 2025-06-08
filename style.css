@@ -1,0 +1,1109 @@
+/* GENERAL */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap'); /* Added from HTML */
+
+@font-face {
+    font-family: myfont; /* Consider if this is used, BrittanySignature.ttf needs to be in ./Assets/ */
+    src: url("./Assets/BrittanySignature.ttf") format("truetype"); /* Corrected format */
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Added for better layout control */
+}
+
+body {
+    font-family: "Montserrat", "Poppins", sans-serif; /* Added Poppins as a fallback */
+    background-color: #FAF9F6; /* hwb(0 97% 3%) is #FAF9F6 */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Webkit browsers */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+p {
+    color: rgb(0, 0, 0);
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+    transition: all 300ms ease;
+}
+
+/* SPLASH SCREEN & INITIAL CONTENT HIDE (Moved from inline HTML) */
+.main-content {
+  display: none; /* Hidden initially, shown by JS */
+}
+
+.logo-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FAF9F6; /* Consistent background */
+  /* background-image: url('./Assets/.jpg'); Optional: if you have a splash background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 0.6s ease-out; /* For fade out effect */
+}
+
+.center-logo-container {
+  display: flex; /* Already part of .logo-section, but can be kept for specificity */
+  justify-content: center;
+  align-items: center;
+}
+
+.center-logo {
+  max-width: 500px;
+  width: 80%; /* Responsive width */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.center-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px rgba(128, 0, 128, 0.6));
+}
+
+/* DESKTOP NAV */
+#desktop-nav {
+    display: flex;
+    width: 100%; /* Full width */
+    position: fixed; /* Sticky nav */
+    top: 0;
+    left: 0;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh; /* Can be a fixed height like 70px */
+    padding: 0 5%;
+    z-index: 1000; /* Ensure it's above other content */
+    background-color: #FAF9F6; /* Or transparent, with a scroll effect */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease;
+}
+
+#desktop-nav .logo img { /* Specific selector for the logo image */
+    height: 50px; /* Adjusted size */
+    width: auto;
+    /* padding-left: 10px; No longer needed with flex space-between */
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem; /* Adjusted gap */
+    list-style: none;
+    font-size: 1.1rem; /* Adjusted size */
+    align-items: center;
+}
+
+nav a:hover {
+    color: purple; /* Example hover color */
+    text-decoration: underline;
+    text-underline-offset: 0.5rem; /* Adjusted offset */
+}
+
+/* HAMBURGER NAV */
+#hamburger-nav {
+    display: none; /* Hidden by default, shown by media query */
+    justify-content: space-between; /* Align logo and icon */
+    align-items: center;
+    height: 10vh; /* Similar to desktop nav */
+    padding: 0 5%;
+    position: fixed; /* Sticky nav */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FAF9F6;
+    z-index: 1001; /* Above desktop nav if it's also fixed and overlaps */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#hamburger-nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.hamburger-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.hamburger-icon span {
+    width: 100%;
+    height: 3px; /* Slightly thicker */
+    background-color: #333; /* Darker for better visibility */
+    transition: all 0.3s ease-in-out;
+    border-radius: 2px; /* Rounded ends */
+}
+
+.menu-links {
+    position: absolute;
+    top: calc(100% + 5px); /* Position below the nav bar */
+    right: 0;
+    background-color: #fff; /* Solid background */
+    width: 200px; /* Fixed width or fit-content */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out; /* Smoother transition */
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    z-index: 1000;
+}
+
+.menu-links a {
+    display: block;
+    padding: 12px 20px; /* More padding */
+    text-align: left; /* Align text to the left */
+    font-size: 1.1rem;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-links a:hover {
+    background-color: #f0f0f0; /* Hover effect */
+    color: purple;
+}
+
+.menu-links li {
+    list-style: none;
+    border-bottom: 1px solid #eee; /* Separator */
+}
+.menu-links li:last-child {
+    border-bottom: none;
+}
+
+.menu-links.open {
+    max-height: 300px; /* Adjust as needed */
+}
+
+.hamburger-icon.open span:first-child {
+    transform: rotate(45deg) translate(7px, 7px); /* Adjusted for thicker lines */
+}
+
+.hamburger-icon.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-icon.open span:last-child {
+    transform: rotate(-45deg) translate(7px, -7px); /* Adjusted for thicker lines */
+}
+
+/* SECTIONS GENERAL */
+section {
+    padding: 80px 5%; /* Consistent padding, adjust top padding if nav is fixed */
+    min-height: 70vh; /* Allow content to define height, but have a minimum */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Default text align for sections */
+}
+
+section:nth-child(odd) {
+  /* background-color: #f9f9f9; Optional alternating background */
+}
+
+.title { /* General title style for sections */
+    font-family: "Poppins", "Poppins", sans-serif; /* Using Poppins from HTML */
+    font-weight: 700;
+    font-size: 2.8rem; /* Responsive font size */
+    color: #222;
+    margin-bottom: 1.5rem; /* Space below title */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.05rem;
+}
+
+/* HERO SECTION */
+#hero {
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 120px 5% 5rem; /* Increased padding for more space */
+  background: linear-gradient(135deg, #ffffff, #e9e4f0); /* Softer, more premium gradient */
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.floating-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem; /* More space below logo */
+  animation: floatPixels 5s ease-in-out infinite; /* Slightly slower, smoother animation */
+}
+
+.floating-logo {
+  width: 300px; /* Slightly larger logo */
+  max-width: 75%;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0px 8px 20px rgba(0, 0, 0, 0.1)); /* Softer, more defined shadow */
+}
+
+.floating-logo:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0px 10px 25px rgba(107, 0, 107, 0.15)); /* Enhanced hover shadow */
+}
+
+@keyframes floatPixels {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px); /* Increased float distance */
+  }
+}
+
+.hero-title {
+  font-family: "Poppins", "Poppins", sans-serif; /* Popping, bold font */
+  font-size: 3.2rem; /* Attention-grabbing size */
+  font-weight: 700; /* Bold */
+  color: #333; /* Dark, strong color */
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* 135° angled drop shadow (approx) */
+  /* For a more precise 135deg shadow, you might need to adjust x and y based on blur */
+  /* text-shadow: 2px -2px 4px rgba(0,0,0,0.3); /* Alternative angle */
+}
+
+.animated-intro-text {
+  margin-bottom: 2rem;
+}
+
+.animated-intro-text p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+  color: #444;
+  max-width: 700px;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  opacity: 0; /* Start hidden for animation */
+  transform: translateY(30px); /* Start lower for slide-up */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animated-intro-text p.show { /* Class added by Intersection Observer */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animated-intro-text .intro-line-1 {
+  transition-delay: 0.2s; /* Stagger animation */
+}
+.animated-intro-text .intro-line-2 {
+  transition-delay: 0.4s; /* Stagger animation */
+}
+
+
+.cta-button {
+  font-family: "Poppins", sans-serif; /* Popping font */
+  background: linear-gradient(135deg, #8A2BE2, #4B0082); /* Premium purple gradient */
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px; /* Pill shape */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(75, 0, 130, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(75, 0, 130, 0.5);
+}
+
+/* POPUP FORM STYLES */
+.popup-form-container {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Ensure it's on top */
+  padding: 20px;
+}
+
+.strategy-call-form {
+  background: linear-gradient(135deg, #ffffff, #f0e6f6); /* Premium light gradient */
+  padding: 2.5rem 3rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+}
+
+.strategy-call-form h2 {
+  font-family: "Poppins", sans-serif; /* Popping font */
+  color: #4B0082; /* Deep purple */
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.strategy-call-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.strategy-call-form input[type="text"],
+.strategy-call-form input[type="email"],
+.strategy-call-form input[type="tel"] {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+.strategy-call-form input:focus {
+    border-color: #8A2BE2;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+}
+
+
+.strategy-call-form .calendar-link {
+  display: inline-block;
+  background-color: #4285F4; /* Google blue */
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0.5rem 0 1.5rem;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+.strategy-call-form .calendar-link:hover {
+  background-color: #357ABD;
+}
+
+.strategy-call-form button[type="submit"] {
+  background: linear-gradient(135deg, #8A2BE2, #4B0082);
+  color: white;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
+}
+.strategy-call-form button[type="submit"]:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(75, 0, 130, 0.4);
+}
+
+.strategy-call-form .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.strategy-call-form .close-btn:hover {
+  color: #333;
+}
+
+
+/* MEET THE TEAM SECTION */
+#team {
+  background-color: #FAF9F6; /* Consistent light background */
+  padding: 80px 5%;
+}
+
+#team .title {
+  font-family: "Poppins", "Poppins", sans-serif;
+  color: #333;
+  margin-bottom: 3rem;
+}
+
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.team-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  width: calc(33.333% - 1.5rem); /* Adjust for 3 cards with gap */
+  min-width: 280px;
+  max-width: 320px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* For image zoom effect */
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(138, 43, 226, 0.15); /* Purpleish shadow on hover */
+}
+
+.team-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  border: 5px solid #f0e6f6; /* Light purple border */
+  transition: transform 0.4s ease;
+}
+.team-card:hover .team-photo {
+    transform: scale(1.1);
+}
+
+.team-name {
+  font-family: "Poppins", sans-serif; /* Popping font */
+  font-size: 1.5rem;
+  color: #4B0082; /* Deep purple */
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.team-role {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* OUR WORK / INDUSTRIES SECTION */
+#work {
+  padding: 80px 5%;
+  background-color: #FAF9F6;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* PRICING SECTION UPDATES */
+#pricing {
+  padding: 80px 5%;
+  background-color: #FAF9F6; /* Consistent light background */
+  font-family: "Poppins", sans-serif;
+}
+
+#pricing .title {
+  font-family: "Poppins", "Poppins", sans-serif;
+  color: #333;
+  margin-bottom: 1rem; /* Original */
+}
+
+.pricing-subtext {
+  font-family: "Poppins", sans-serif; /* Popping font */
+  font-size: 1.5rem; /* Larger and bolder */
+  color: #4B0082; /* Deep purple */
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.pricing-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem; /* Increased gap */
+  padding: 0 1rem;
+}
+
+.pricing-card {
+  background-color: #fff;
+  border-radius: 15px; /* Slightly more pronounced radius */
+  box-shadow: 0 8px 25px rgba(138, 43, 226, 0.1); /* Purpleish shadow */
+  padding: 2.5rem 2rem;
+  width: calc(33.333% - 1.5rem); /* Adjust for 3 cards with gap */
+  min-width: 300px; /* Ensure cards don't get too small */
+  max-width: 340px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #eee; /* Subtle border */
+}
+
+.pricing-card:hover {
+  transform: translateY(-12px); /* More lift */
+  box-shadow: 0 15px 35px rgba(138, 43, 226, 0.2); /* Enhanced purple shadow */
+}
+
+.plan-title {
+  font-family: "Poppins", sans-serif; /* Popping font */
+  font-size: 1.7rem;
+  color: #8A2BE2; /* Vibrant purple */
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 2.5rem;
+  color: #111;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+  font-family: "Poppins", sans-serif;
+}
+.original-price {
+  font-size: 1.2rem;
+  color: #999;
+  text-decoration: line-through;
+  margin-left: 0.5rem;
+  font-weight: normal;
+}
+.offer-text {
+    font-size: 0.9rem;
+    color: #d9534f; /* A reddish color for offers */
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    background-color: #fcf8e3;
+    padding: 3px 6px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+
+.upfront {
+  color: #555; /* Darker grey */
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem; /* Adjusted space */
+  flex-grow: 1;
+}
+
+.features li {
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1.8rem; /* More space for icon */
+  font-size: 1rem;
+  color: #333;
+}
+
+.features li::before {
+  content: "✅"; /* Changed icon */
+  position: absolute;
+  left: 0;
+  color: #5cb85c; /* Green check */
+  font-size: 1.1rem; /* Slightly larger icon */
+}
+
+.validity-text {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    text-align: center;
+}
+
+.try-btn { /* This is the "Get Started" button */
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #8A2BE2, #4B0082);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  width: 100%;
+  margin-top: auto; /* Pushes button to the bottom */
+  text-transform: uppercase;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(75, 0, 130, 0.3);
+}
+
+.try-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 15px rgba(75, 0, 130, 0.4);
+}
+
+.cta-button-small { /* For "Get Free Strategy Call" under pricing */
+  font-family: "Poppins", sans-serif;
+  background-color: transparent;
+  color: #8A2BE2;
+  border: 2px solid #8A2BE2;
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+.cta-button-small:hover {
+  background-color: #8A2BE2;
+  color: white;
+  transform: scale(1.02);
+}
+
+
+/* SUBSCRIPTION OFFERS SECTION */
+#subscription-offers {
+  padding: 60px 5%;
+  background-color: #f0e6f6; /* Light purple background */
+  font-family: "Poppins", sans-serif;
+}
+
+#subscription-offers .title {
+  font-family: "Poppins", "Poppins", sans-serif;
+  color: #4B0082; /* Deep purple */
+  margin-bottom: 2rem;
+}
+
+.subscription-box {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.subscription-box h3 {
+  font-family: "Poppins", sans-serif;
+  color: #8A2BE2; /* Vibrant purple */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.subscription-box ul {
+  list-style: none; /* Changed from disc to none, will use custom bullets */
+  padding-left: 0;
+  margin-bottom: 1.5rem;
+}
+
+.subscription-box ul li {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 25px; /* Space for custom bullet */
+}
+.subscription-box ul li::before {
+    content: "●"; /* Custom bullet */
+    color: #8A2BE2; /* Purple bullet */
+    font-size: 1.2em; /* Adjust size of bullet */
+    position: absolute;
+    left: 0;
+    top: 0px; /* Adjust vertical alignment */
+}
+
+
+.payment-terms {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.7;
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+
+/* CONTACT SECTION (already styled, minor adjustments if needed) */
+#contact {
+    background-color: #333;
+    color: #fff;
+    min-height: auto;
+    padding: 80px 5% 3rem; /* Ensure consistent padding */
+}
+#contact .title {
+    color: #fff;
+    font-family: "Poppins", "Poppins", sans-serif;
+}
+.contact-info-upper-container {
+    /* Existing styles are good, ensure consistency */
+    max-width: 550px; /* Slightly wider if needed */
+}
+.contact-info-container a:hover {
+    color: #ab68ff; /* Lighter purple for hover on dark bg */
+    text-decoration: underline;
+}
+
+
+/* FOOTER SECTION */
+footer {
+    text-align: center;
+    padding: 2.5rem 5%;
+    background-color: #1a1a1a; /* Darker footer */
+    color: #bbb;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+}
+
+footer p {
+    color: #bbb;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+footer p:last-of-type {
+    margin-bottom: 1.5rem;
+}
+
+.footer-links {
+    margin-top: 1rem;
+}
+
+.footer-links a {
+    color: #ddd;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: #8A2BE2; /* Purple hover for links */
+    text-decoration: underline;
+}
+
+.industry-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.industry-tab-button {
+  font-family: "Poppins", sans-serif;
+  background-color: transparent;
+  color: #4B0082;
+  border: 2px solid #4B0082;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.industry-tab-button:hover, .industry-tab-button.active {
+  background-color: #4B0082;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(75, 0, 130, 0.2);
+}
+
+.industry-content-container {
+  width: 100%;
+}
+
+.industry-content {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.industry-content.active {
+  display: block;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* Further increased min-width */
+  gap: 24px; /* Consistent gap */
+  width: 100%;
+}
+
+.media-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 650px; /* Further increased height for even larger frames */
+}
+
+.media-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.media-item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures media covers the card without distortion */
+  display: block;
+}
+
+.media-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+  color: white;
+  padding: 2rem 1.25rem 1.25rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: left;
+  line-height: 1.3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* IMAGE MODAL STYLES */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content-wrapper {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 100%;
+  max-height: 100%;
+  display: none; /* Hide both by default */
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #bbb;
+  text-decoration: none;
+}
+
+.media-card {
+  cursor: pointer;
+}
+
+/* ICONS (General icon styling if used outside specific components) */
+.icon {
+    cursor: pointer;
+    height: 1.8rem;
+}
+
+/* BUTTONS (General button styling if not covered by .try-btn etc.) */
+/* .btn, .btn-color-1, .btn-color-2 styles are good as general fallbacks */
+/* Specific buttons like .cta-button, .try-btn, .cta-button-small are styled above */
+
+
+/* ANIMATIONS (e.g., slideIn, show for IntersectionObserver) */
+/* .section__text and .show are now more generic, specific animations added above */
+.intro-line-1, .intro-line-2, .team-card, .pricing-card, .subscription-box { /* Elements for IntersectionObserver */
+    opacity: 0;
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    transform: translateY(25px);
+}
+
+.intro-line-1.show, .intro-line-2.show, .team-card.show, .pricing-card.show, .subscription-box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Staggering for cards if needed */
+.team-card:nth-child(2).show { transition-delay: 0.1s; }
+.team-card:nth-child(3).show { transition-delay: 0.2s; }
+/* Similar for pricing cards */
+.pricing-card:nth-child(2).show { transition-delay: 0.1s; }
+.pricing-card:nth-child(3).show { transition-delay: 0.2s; }
+
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1200px) {
+    .pricing-card {
+        width: calc(50% - 1rem); /* 2 cards per row */
+        max-width: 380px;
+    }
+    .team-card {
+        width: calc(50% - 1rem); /* 2 cards per row */
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    #desktop-nav {
+        display: none;
+    }
+    #hamburger-nav {
+        display: flex;
+    }
+    .title {
+        font-size: 2rem; /* Adjusted title size */
+    }
+    .hero-title {
+        font-size: 2.5rem; /* Adjusted hero title */
+    }
+    .animated-intro-text p {
+        font-size: 1.1rem;
+    }
+    .cta-button {
+        font-size: 1rem;
+        padding: 0.8rem 2rem;
+    }
+
+    #hero, #pricing, #team, #work-showcase, #subscription-offers, #contact, section {
+        padding-top: 12vh; /* Adjust padding for fixed hamburger nav */
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+     #work-showcase { padding-left: 0; padding-right: 0;} /* For full-width carousel container */
+
+
+    .pricing-card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .pricing-card {
+        width: 90%;
+        max-width: 400px; /* Max width for single column cards */
+        margin-bottom: 1.5rem;
+    }
+    .team-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .team-card {
+        width: 90%;
+        max-width: 400px;
+        margin-bottom: 1.5rem;
+    }
+
+    .carousel-slide img {
+        width: calc(100% / 2); /* Show 2 images on medium screens */
+        max-height: 250px; /* Reverted */
+    }
+    .carousel-container {
+        width: 90%; /* Reverted */
+    }
+    .strategy-call-form {
+        padding: 2rem 1.5rem;
+        max-width: 90%;
+    }
+    .strategy-call-form h2 { font-size: 1.6rem; }
+
+}
+
+@media screen and (max-width: 480px) {
+    .title {
+        font-size: 1.7rem;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .animated-intro-text p {
+        font-size: 1rem;
+    }
+    .floating-logo {
+        width: 200px; /* Already present, ensure it's good */
+    }
+    .plan-title {
+        font-size: 1.4rem;
+    }
+    .price {
+        font-size: 2rem;
+    }
+    .original-price { font-size: 1rem; }
+    .try-btn, .cta-button-small {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    .cta-button {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.5rem;
+    }
+    .carousel-slide img {
+        width: 100%; /* Show 1 image on small screens */
+        max-height: 220px; /* Reverted */
+        padding: 0 5px; /* Reverted */
+    }
+    .carousel-container {
+        width: 90%;
+        border-radius: 0; /* Reverted */
+    }
+    .prev-btn, .next-btn {
+        padding: 8px 12px;
+        font-size: 1.2rem;
+    }
+    .strategy-call-form h2 { font-size: 1.4rem; }
+    .strategy-call-form input, .strategy-call-form .calendar-link, .strategy-call-form button[type="submit"] {
+        font-size: 0.9rem;
+        padding: 0.7rem 1rem;
+    }
+    .footer-links a { margin: 0 5px; font-size: 0.8rem;}
+}
+/* FOG EFFECT STYLES REMOVED */

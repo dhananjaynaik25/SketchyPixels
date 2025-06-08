@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sketchy Pixels</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mediaqueries.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <!-- Inline styles removed, will be in style.css -->
+</head>
+
+<body>
+
+  <!-- Splash Logo Section -->
+  <section class="logo-section" id="splash-screen">
+    <div class="center-logo-container">
+      <img
+        src="./Assets/YourLogo.png"
+        alt="Sketchy Pixels"
+        class="center-logo"
+        width="370"
+        height="135"
+        onclick="enterSite()"
+      />
+    </div>
+  </section>
+
+  <!-- Main Content (Hidden initially by CSS) -->
+  <div class="main-content" id="main-content">
+
+    <!-- Desktop Navbar -->
+    <nav id="desktop-nav">
+      <div class="logo">
+        <img src="./Assets/Sketchy.png" alt="Sketchy Pixels" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hamburger Navbar -->
+    <nav id="hamburger-nav">
+      <div class="logo">Sketchy Pixels</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="togglemenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#pricing" onclick="togglemenu()">Pricing</a></li>
+          <li><a href="#contact" onclick="togglemenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="floating-logo-wrapper">
+          <img src="./Assets/Sketchy.png" alt="Sketchy Pixels Logo" class="floating-logo" />
+        </div>
+        <h1 class="hero-title">We Don’t Just Post. We Perform</h1>
+        <div class="animated-intro-text">
+          <p class="intro-line-1">A creative-led social media agency built for brands that dare to stand out.</p>
+          <p class="intro-line-2">At Sketchy Pixels, we blend scroll-stopping creativity with data-driven strategy to turn brands into magnetic online personalities. Whether you’re aiming to go viral, build a loyal following, or just stop blending in—we’re your boldest move yet.</p>
+        </div>
+        <button class="cta-button" onclick="openPopupForm()">Let’s Make Something Wild → Book Your Free Strategy Call</button>
+    </section>
+
+    <!-- Popup Form (Hidden by default) -->
+    <div id="popup-form-container" class="popup-form-container">
+      <form id="strategy-call-form" class="strategy-call-form">
+        <span class="close-btn" onclick="closePopupForm()">&times;</span>
+        <h2>Book Your Free Strategy Call</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+        <p>Or schedule via Google Calendar:</p>
+        <a href="https://calendar.google.com/calendar/u/0/r/appointment" target="_blank" class="calendar-link">Schedule on Google Calendar</a>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <!-- Meet the Team Section -->
+    <section id="team">
+      <h2 class="title">Meet the Team</h2>
+      <div class="team-container">
+        <!-- Team Member Card 1 -->
+        <div class="team-card">
+          <img src="./Assets/team-member-1.jpg" alt="Team Member 1" class="team-photo">
+          <h3 class="team-name">Jahanvi Katariya</h3>
+          <p class="team-role">CEO</p>
+        </div>
+        <!-- Team Member Card 2 -->
+        <div class="team-card">
+          <img src="./Assets/team-member-2.jpg" alt="Team Member 2" class="team-photo">
+          <h3 class="team-name">Dhananjay Naik</h3>
+          <p class="team-role">Co founder</p>
+        </div>
+        <!-- Add more team members as needed -->
+      </div>
+    </section>
+
+
+    <!-- Our Work Section -->
+    <section id="work">
+      <h2 class="title">Industries</h2>
+      <div class="industry-tabs">
+        <button class="industry-tab-button active" onclick="showIndustry('fitness')">Fitness</button>
+        <button class="industry-tab-button" onclick="showIndustry('restaurant')">Restaurant</button>
+        <button class="industry-tab-button" onclick="showIndustry('tech')">Tech</button>
+        <button class="industry-tab-button" onclick="showIndustry('medical')">Medical</button>
+        <button class="industry-tab-button" onclick="showIndustry('finance')">Finance</button>
+        <button class="industry-tab-button" onclick="showIndustry('fashion')">Fashion</button>
+        <button class="industry-tab-button" onclick="showIndustry('real_estate')">Real Estate</button>
+        <button class="industry-tab-button" onclick="showIndustry('education')">Education</button>
+      </div>
+      <div class="industry-content-container">
+        <!-- Fitness -->
+        <div id="fitness" class="industry-content active">
+          <div class="media-grid">
+            <div class="media-card">
+              <img src="./Assets/fitness1.jpg" alt="Diwali Fitness Poster" class="media-item">
+              <div class="media-title">Diwali Fitness Poster</div>
+            </div>
+            <div class="media-card">
+              <video src="./Assets/fitness2.mp4" class="media-item" autoplay muted loop playsinline></video>
+              <div class="media-title">Gym Coaching Reel</div>
+            </div>
+            <div class="media-card">
+              <video src="./Assets/fitness3.mp4" class="media-item" autoplay muted loop playsinline></video>
+              <div class="media-title">Yoga Class UI Design</div>
+            </div>
+          </div>
+        </div>
+        <!-- Restaurant -->
+        <div id="restaurant" class="industry-content">
+          <div class="media-grid">
+            <div class="media-card">
+              <img src="./Assets/restaurant1.jpg" alt="Restaurant Menu Design" class="media-item">
+              <div class="media-title">Restaurant Menu Design</div>
+            </div>
+            <div class="media-card">
+              <video src="./Assets/restaurant2.jpg" class="media-item" autoplay muted loop playsinline></video>
+              <div class="media-title">Food Promo Video</div>
+            </div>
+             <div class="media-card">
+              <img src="./Assets/restaurant3.jpg" alt="Cafe Branding" class="media-item">
+              <div class="media-title">Cafe Branding</div>
+            </div>
+          </div>
+        </div>
+        <!-- Tech -->
+        <div id="tech" class="industry-content">
+          <div class="media-grid">
+            <div class="media-card">
+              <img src="./Assets/Tech1.png" alt="SaaS Platform UI" class="media-item">
+              <div class="media-title">SaaS Platform UI</div>
+            </div>
+            <div class="media-card">
+              <video src="./Assets/Tech2.mp4" class="media-item" autoplay muted loop playsinline></video>
+              <div class="media-title">App Launch Promo</div>
+            </div>
+            <div class="media-card">
+              <img src="./Assets/Tech3.png" alt="Gadget Social Post" class="media-item">
+              <div class="media-title">Gadget Social Post</div>
+            </div>
+          </div>
+        </div>
+        <!-- Medical -->
+        <div id="medical" class="industry-content">
+          <div class="media-grid">
+            <div class="media-card">
+              <img src="./Assets/medical1.png" alt="Healthcare Infographic" class="media-item">
+              <div class="media-title">Healthcare Infographic</div>
+            </div>
+            <div class="media-card">
+              <video src="./Assets/medical_video.mp4" class="media-item" autoplay muted loop playsinline></video>
+              <div class="media-title">Clinic Explainer Video</div>
+            </div>
+            <div class="media-card">
+              <img src="./Assets/medical2.png" alt="Wellness App UI" class="media-item">
+              <div class="media-title">Wellness App UI</div>
+            </div>
+          </div>
+        </div>
+        <!-- Finance -->
+        <div id="finance" class="industry-content">
+          <div class="media-grid">
+            <div class="media-card">
+              <img src="./Assets/finance1.png" alt="Investment App Design" class="media-item">
+              <div class="media-title">Investment App Design</div>
+            </div>
+            <div class="media-card">
+              <video src="./Assets/finance_video.mp4" class="media-item" autoplay muted loop playsinline></video>
+              <div class="media-title">Fintech Promo</div>
+            </div>
+            <div class="media-card">
+              <img src="./Assets/finance2.png" alt="Banking Social Post" class="media-item">
+              <div class="media-title">Banking Social Post</div>
+            </div>
+          </div>
+        </div>
+        <!-- Fashion -->
+        <div id="fashion" class="industry-content">
+          <div class="media-grid">
+            <div class="media-card">
+             <video src="./Assets/fashion1.mp4" class="media-item" autoplay muted loop playsinline></video>
+              <div class="media-title">Runway Show Reel</div>
+            </div>
+            <div class="media-card">
+              <video src="./Assets/fashion2.mp4" class="media-item" autoplay muted loop playsinline></video>
+              <div class="media-title">Runway Show Reel</div>
+            </div>
+            <div class="media-card">
+             <video src="./Assets/fashion3.mp4" class="media-item" autoplay muted loop playsinline></video>
+              <div class="media-title">Runway Show Reel</div>
+            </div>
+          </div>
+        </div>
+        <!-- Real Estate -->
+        <div id="real_estate" class="industry-content">
+          <div class="media-grid">
+            <div class="media-card">
+              <img src="./Assets/real_estate1.jpg" alt="Luxury Property Listing" class="media-item">
+              <div class="media-title">Luxury Property Listing</div>
+            </div>
+            <div class="media-card">
+              <video src="./Assets/real_estate_video.mp4" class="media-item" autoplay muted loop playsinline></video>
+              <div class="media-title">Property Tour Video</div>
+            </div>
+            <div class="media-card">
+              <img src="./Assets/real_estate2.jpg" alt="Open House Promotion" class="media-item">
+              <div class="media-title">Open House Promotion</div>
+            </div>
+          </div>
+        </div>
+        <!-- Education -->
+        <div id="education" class="industry-content">
+          <div class="media-grid">
+            <div class="media-card">
+              <img src="./Assets/education.png" alt="Online Course UI" class="media-item">
+              <div class="media-title">Online Course Platform UI</div>
+            </div>
+            <div class="media-card">
+              <video src="./Assets/education1.mp4" class="media-item" autoplay muted loop playsinline></video>
+              <div class="media-title">E-Learning Explainer Video</div>
+            </div>
+            <div class="media-card">
+              <img src="./Assets/education2.png" alt="University Social Post" class="media-item">
+              <div class="media-title">University Social Post</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+      <h2 class="title">Social Media Marketing Packages</h2>
+      <p class="pricing-subtext">Book a Call</p>
+      <div class="pricing-card-container">
+
+        <!-- Starter Spark -->
+        <div class="pricing-card">
+          <h3 class="plan-title">Starter Spark</h3>
+          <p class="price">₹3,999 <span class="original-price">₹6,999</span></p>
+          <p class="offer-text">50% Off Launch Offer <span class="validity-text" style="font-style: italic; font-size: 0.85rem; color: #777; margin-left: 5px;">(Valid for 1 month)</span></p>
+          <p class="upfront">Upfront: ₹999</p>
+          <ul class="features">
+            <li>8 feed posts/month</li>
+            <li>3 reels/month</li>
+            <li>5 story designs/month</li>
+            <li>Hashtag research</li>
+            <li>Monthly performance summary</li>
+          </ul>
+          <button class="try-btn" onclick="openPopupForm()">Get Free Strategy Call</button>
+        </div>
+
+        <!-- Growth Boost -->
+        <div class="pricing-card">
+          <h3 class="plan-title">Growth Boost</h3>
+          <p class="price">₹9,999 <span class="original-price">₹18,999</span></p>
+          <p class="offer-text">50% Off Launch Offer <span class="validity-text" style="font-style: italic; font-size: 0.85rem; color: #777; margin-left: 5px;">(Valid for 1 month)</span></p>
+          <p class="upfront">Upfront: ₹2,500</p>
+          <ul class="features">
+            <li>14 feed posts/month</li>
+            <li>7 reels/month</li>
+            <li>10 stories/month</li>
+            <li>Branded post design</li>
+            <li>SEO hashtags + content calendar</li>
+            <li>Growth insights</li>
+          </ul>
+          <button class="try-btn" onclick="openPopupForm()">Get Free Strategy Call</button>
+        </div>
+
+        <!-- Pro Impact -->
+        <div class="pricing-card">
+          <h3 class="plan-title">Pro Impact</h3>
+          <p class="price">₹14,999 <span class="original-price">₹24,999</span></p>
+          <p class="offer-text">50% Off Launch Offer <span class="validity-text" style="font-style: italic; font-size: 0.85rem; color: #777; margin-left: 5px;">(Valid for 1 month)</span></p>
+          <p class="upfront">Upfront: ₹3,750</p>
+          <ul class="features">
+            <li>18 feed posts/month</li>
+            <li>10 reels/month</li>
+            <li>Daily stories</li>
+            <li>Ad + promotional creatives</li>
+            <li>Influencer strategy</li>
+            <li>Analytics + strategy call</li>
+          </ul>
+          <button class="try-btn" onclick="openPopupForm()">Get Free Strategy Call</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subscription Offers Section -->
+    <section id="subscription-offers">
+      <h2 class="title">Subscription Offers</h2>
+      <div class="subscription-box">
+        <h3>Subscription Packages:</h3>
+        <ul>
+          <li>3-month subscription: 10% discount</li>
+          <li>6-month subscription: 20% discount</li>
+          <li>1-year subscription: 40% discount</li>
+        </ul>
+        <p class="payment-terms">
+          A 25% upfront payment is required to initiate your full month's design package.
+          Once this payment is received, we will begin delivering ready-to-use posts,
+          reels, and stories on a weekly basis. The remaining balance will be due at the
+          end of the month.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="title">Get In Touch</h2>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img src="./Assets/email.png" alt="Email icon" class="icon contact-icon" />
+          <p><a href="mailto:katariyajahanvi2@gmail.com">katariyajahanvi2@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img src="./Assets/phone.png" alt="Phone icon" class="icon contact-icon" />
+          <p><a href="tel:+918446183422">+91 8446183422</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img src="./Assets/instagram.png" alt="Instagram icon" class="icon contact-icon" />
+          <p><a href="https://www.instagram.com/sketchy.pixelsagency3?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">sketchy.pixelsagency3</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>&copy; 2025 Sketchy Pixels. All rights reserved.</p>
+      <p>Site made with bold fonts & brighter ideas by Sketchy Pixels.</p>
+      <div class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="https://www.instagram.com/sketchy.pixelsagency3" target="_blank">Instagram</a>
+      </div>
+    </footer>
+
+  </div> <!-- End of main-content -->
+<!-- Image Modal -->
+  <div id="image-modal" class="modal">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content-wrapper">
+      <img class="modal-content" id="modal-image">
+      <video class="modal-content" id="modal-video" controls></video>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js" defer></script>
+</body>
+</html>

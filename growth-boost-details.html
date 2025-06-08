@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Impact Details - Sketchy Pixels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav id="desktop-nav">
+            <div class="logo">
+                <img src="./Assets/Sketchy.png" alt="Sketchy Pixels" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main style="padding-top: 15vh; text-align: center; padding-left: 5%; padding-right: 5%;">
+        <h1>Pro Impact Package Details</h1>
+        <div class="package-details-container" style="text-align: left; max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+            <h3 class="plan-title" style="font-family: 'Poppins', sans-serif; font-size: 1.7rem; color: #8A2BE2; font-weight: 700; margin-bottom: 0.5rem;">Pro Impact</h3>
+            <p class="price" style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; color: #111; font-weight: bold; margin-bottom: 0.2rem;">₹14,999 <span class="original-price" style="font-size: 1.2rem; color: #999; text-decoration: line-through; margin-left: 0.5rem; font-weight: normal;">₹24,999</span></p>
+            <p class="upfront" style="color: #555; font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: 500;">Upfront: ₹3,750</p>
+            <h4 style="font-family: 'Poppins', sans-serif; margin-top: 1.5rem; margin-bottom: 0.8rem; font-size: 1.2rem;">Features:</h4>
+            <ul class="features" style="list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                <li style="margin-bottom: 0.8rem; position: relative; padding-left: 1.8rem; font-size: 1rem; color: #333;">18 feed posts/month</li>
+                <li style="margin-bottom: 0.8rem; position: relative; padding-left: 1.8rem; font-size: 1rem; color: #333;">10 reels/month</li>
+                <li style="margin-bottom: 0.8rem; position: relative; padding-left: 1.8rem; font-size: 1rem; color: #333;">Daily stories</li>
+                <li style="margin-bottom: 0.8rem; position: relative; padding-left: 1.8rem; font-size: 1rem; color: #333;">Ad + promotional creatives</li>
+                <li style="margin-bottom: 0.8rem; position: relative; padding-left: 1.8rem; font-size: 1rem; color: #333;">Influencer strategy</li>
+                <li style="margin-bottom: 0.8rem; position: relative; padding-left: 1.8rem; font-size: 1rem; color: #333;">Analytics + strategy call</li>
+            </ul>
+            <p class="validity-text" style="font-size: 0.85rem; color: #777; margin-bottom: 1.5rem; font-style: italic; text-align: center;">Valid for 1 month</p>
+            <button class="cta-button-small" onclick="openPopupForm()" style="font-family: 'Poppins', sans-serif; background-color: transparent; color: #8A2BE2; border: 2px solid #8A2BE2; padding: 0.7rem 1.5rem; border-radius: 50px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; width: 100%; margin-top: 1rem; font-size: 0.95rem;">Get Free Strategy Call</button>
+            <div style="margin-top: 20px; text-align: center;">
+                <a href="index.html#pricing" class="try-btn" style="font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #8A2BE2, #4B0082); color: #fff; border: none; padding: 0.9rem 1.8rem; border-radius: 50px; cursor: pointer; font-weight: 700; transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; text-transform: uppercase; font-size: 1rem; box-shadow: 0 4px 10px rgba(75, 0, 130, 0.3); display: inline-block; text-decoration: none;">Back to Pricing</a>
+            </div>
+        </div>
+        <!-- Popup Form Container -->
+        <div id="popup-form-container" class="popup-form-container" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 2000; padding: 20px;">
+          <form id="strategy-call-form" class="strategy-call-form" style="background: linear-gradient(135deg, #ffffff, #f0e6f6); padding: 2.5rem 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); width: 100%; max-width: 500px; position: relative; text-align: left; font-family: 'Poppins', sans-serif;">
+            <span class="close-btn" onclick="closePopupForm()" style="position: absolute; top: 15px; right: 20px; font-size: 2rem; color: #888; cursor: pointer; transition: color 0.3s ease;">&times;</span>
+            <h2 style="font-family: 'Poppins', sans-serif; color: #4B0082; text-align: center; margin-bottom: 1.5rem; font-size: 1.8rem;">Book Your Free Strategy Call</h2>
+            <label for="name" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Name:</label>
+            <input type="text" id="name" name="name" required style="width: 100%; padding: 0.8rem 1rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
+            <label for="email" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Email:</label>
+            <input type="email" id="email" name="email" required style="width: 100%; padding: 0.8rem 1rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
+            <label for="phone" style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 0.8rem 1rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
+            <p style="color: #333;">Or schedule via Google Calendar:</p>
+            <a href="YOUR_GOOGLE_CALENDAR_LINK_HERE" target="_blank" class="calendar-link" style="display: inline-block; background-color: #4285F4; color: white; padding: 0.7rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 0.5rem 0 1.5rem; transition: background-color 0.3s ease; text-align: center;">Schedule on Google Calendar</a>
+            <button type="submit" style="background: linear-gradient(135deg, #8A2BE2, #4B0082); color: white; border: none; padding: 0.9rem 2rem; font-size: 1.1rem; font-weight: 700; border-radius: 50px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; width: 100%; text-transform: uppercase;">Submit</button>
+          </form>
+        </div>
+    </main>
+    <script>
+      // Basic popup functionality for the details page
+      const popupFormContainer = document.getElementById('popup-form-container');
+      const strategyCallForm = document.getElementById('strategy-call-form');
+
+      function openPopupForm() {
+        if (popupFormContainer) {
+          popupFormContainer.style.display = 'flex';
+        }
+      }
+
+      function closePopupForm() {
+        if (popupFormContainer) {
+          popupFormContainer.style.display = 'none';
+        }
+      }
+
+      if (strategyCallForm) {
+        strategyCallForm.addEventListener('submit', function(event) {
+          event.preventDefault();
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const phone = document.getElementById('phone').value;
+          const subject = `New Strategy Call Request from ${name} (Pro Impact)`;
+          const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nPackage Interest: Pro Impact\nScheduled via website form.`;
+          const mailtoLink = `mailto:katariyajahanvi2@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailtoLink;
+          alert('Thank you! Your request has been prepared. Please send the email through your mail client.');
+          strategyCallForm.reset();
+          closePopupForm();
+        });
+      }
+
+      if (popupFormContainer) {
+        popupFormContainer.addEventListener('click', function(event) {
+          if (event.target === popupFormContainer) {
+            closePopupForm();
+          }
+        });
+      }
+    </script>
+    <footer>
+        <p>&copy; 2025 Sketchy Pixels. All rights reserved.</p>
+    </footer>
+</body>
+</html>
